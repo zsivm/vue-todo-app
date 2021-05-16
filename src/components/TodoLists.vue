@@ -7,7 +7,7 @@
             v-for="list in todoLists"
             :key="list.id"
         >   
-            <router-link :to="'/todo/' + list.name">
+            <router-link :to="{ name: 'TodoView', params: { name: list.name, id: list.id }}">
                 <div class="flex justify-between">
                     <span class="inline-block align-middle">{{ list.name }}</span>
                     <span class="inline-block align-middle">&#8250;</span>
