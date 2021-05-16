@@ -23,15 +23,26 @@ export default {
   },
   mounted() {
     this.currentId = this.$route.params.id;
-    
+    console.log("currentId: ", this.currentId);
+  
     if(localStorage.getItem("todoLists")) {
       try {
         this.todoLists = JSON.parse(localStorage.getItem("todoLists"));
-        this.findCurrentListById();
+        console.log("todoLists: ", this.todoLists);
+        //this.findCurrentListById();
+        findCurrentListById();
       } catch(e) {
         localStorage.removeItem("todoLists");
       }
     }
+
+    console.log(this.currentList);
+  },
+  computed: {
+    
+    findCurrentListById() {
+      this.currentList = this.todoLists.filter(list => list.id == this.currentId)[0];
+    },
   },
   methods: {
     addTodo(newTodo) {
@@ -48,9 +59,10 @@ export default {
       const parsed = JSON.stringify(this.todoLists);
       localStorage.setItem("todoLists", parsed);
     },
-    findCurrentListById() {
-      this.currentList = this.todoLists.filter(list => list.id == this.currentId)[0];
-    },
+    deleteTodo(todoId) {
+      this.currentList.todos = this.currentList.todos.filter(todo => todo.id != todoId);
+      this.saveTodos();
+    }
   }
 };
 </script>
