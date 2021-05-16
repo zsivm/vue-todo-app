@@ -1,4 +1,9 @@
-# ui
+# Vue-todo-app
+This is a todo app programmed in vue.js
+The app will be able to handle multiple todo lists, have proper login, use firebase for data storage and ux will be polished.
+
+The first scope is to have multiple lists, which contain themed todo tasks, which can be added completed and removed, storage is localStorage based.
+UX is not priority in this scope.
 
 ## Project setup
 ```
