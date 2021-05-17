@@ -1,7 +1,13 @@
 <template>
   <div class="bg-blue-500">
-    <AddTodo @add-todo="addTodo" />
-    <Todos :todos="currentList.todos" @delete-todo="deleteTodo" @todo-clicked="saveTodos" />
+    <AddTodo
+      @add-todo="addTodo"
+    />
+    <Todos
+      :todos="currentList.todos"
+      @delete-todo="deleteTodo"
+      @todo-clicked="saveTodos"
+    />
   </div>
 </template>
 
@@ -18,35 +24,27 @@ export default {
     return {
       todoLists: [],
       currentList: {},
-      currentId: ""
+      currentId: "",
     }
   },
   mounted() {
     this.currentId = this.$route.params.id;
-    console.log("currentId: ", this.currentId);
+    console.log("currentId: ", this.$route.params);
   
     if(localStorage.getItem("todoLists")) {
       try {
         this.todoLists = JSON.parse(localStorage.getItem("todoLists"));
+        this.findCurrentListById();
         console.log("todoLists: ", this.todoLists);
-        //this.findCurrentListById();
-        findCurrentListById();
       } catch(e) {
         localStorage.removeItem("todoLists");
       }
     }
-
-    console.log(this.currentList);
-  },
-  computed: {
-    
-    findCurrentListById() {
-      this.currentList = this.todoLists.filter(list => list.id == this.currentId)[0];
-    },
   },
   methods: {
     addTodo(newTodo) {
       if(newTodo.title) {
+        console.log("currentList: ", this.currentList);
         this.currentList.todos.push(newTodo);
         this.saveTodos();
       }
@@ -62,7 +60,10 @@ export default {
     deleteTodo(todoId) {
       this.currentList.todos = this.currentList.todos.filter(todo => todo.id != todoId);
       this.saveTodos();
-    }
+    },
+     findCurrentListById() {
+      this.currentList = this.todoLists.filter(list => list.id == this.currentId)[0];
+    },
   }
 };
 </script>

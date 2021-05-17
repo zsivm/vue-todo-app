@@ -9,7 +9,7 @@ const routes = [
     component: Home,
   },
   {
-    path: "/todo/:name",
+    path: "/todo/:name/:id",
     name: "TodoView",
     component: TodoView,
     props: true
