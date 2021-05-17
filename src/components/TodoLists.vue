@@ -1,6 +1,6 @@
 <template>
   <div class="text-white text-center mt-10 w-3/4 m-auto">
-    <h1 class="bg-blue-600 mb-5 p-2 text-2xl rounded-full">Lists</h1>
+    <h1 class="bg-indigo-500 mb-5 p-2 text-2xl rounded-full">Lists</h1>
     <ul class="rounded">
         <li
             class="text-left p-3"
@@ -33,7 +33,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 li:nth-child(odd) {
   background-color: rgb(96, 165, 250);
 }

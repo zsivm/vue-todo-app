@@ -1,7 +1,16 @@
 <template>
-  <div class="todo-row">
-    <p :class="{ 'completed': isCompleted }" @click="markComplete">{{ todo.title }}</p>
-    <button @click="$emit('delete-todo', todo.id)">X</button>
+  <div class="box-shadow flex justify-between w-full bg-white mt-2 rounded-lg shadow-md">
+    <span 
+      class="ml-3 my-3 py-2"
+      :class="{ 'completed': isCompleted }"
+      @click="markComplete">
+        {{ todo.title }}
+    </span>
+    <button
+      class="mx-3 my-3 border rounded-md px-3 hover:bg-gray-100" 
+      @click="$emit('delete-todo', todo.id)">
+        X
+    </button>
   </div>
 </template>
 
@@ -29,23 +38,5 @@ export default {
   .completed {
     text-decoration: line-through;
     text-decoration-color: red;
-  }
-  .todo-row {
-    display: flex;
-    justify-content: space-between;
-    background-color: #eee;
-    border-radius: 10px;
-    margin-top: 10px;
-  }
-  p {
-    margin-left: 10px;
-    font-size: 18px;
-  }
-  button {
-    width: 35px;
-    height: 35px;
-    margin: 10px;
-    border-radius: 10px;
-    background-color: #fff;
   }
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <form @submit="addTodo">
-      <input placeholder="Do something..." type="text" v-model="title" name="title">
-      <button type="submit">+</button>
+    <form class="w-full flex items-center" @submit.prevent="addTodo">
+      <input class="box-shadow w-3/4 text-base pl-3 rounded-md py-2 mr-2" placeholder="Do something..." type="text" v-model="title" name="title">
+      <button class="box-shadow text-white text-xl bg-indigo-600 hover:bg-indigo-700 rounded-full px-4 py-2" type="submit">Add</button>
     </form>
   </div>
 </template>
@@ -35,25 +35,4 @@ export default {
 </script>
 
 <style scoped>
-form {
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-input {
-  box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
-  min-width: 50%;
-  font-size: 15px;
-  height: 40px;
-  padding-left: 8px;
-  border-radius: 10px;
-  margin-right: 20px;
-}
-button {
-  box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
-  border-radius: 4px;
-  height: 35px;
-  font-size: 30px;
-  line-height: 0;
-}
 </style>

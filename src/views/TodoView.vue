@@ -1,5 +1,6 @@
 <template>
-  <div class="bg-blue-500">
+  <div class="bg-indigo-500 w-3/4 m-auto rounded-md px-4 pb-4 mt-8">
+    <h2 class="text-2xl text-white p-3">List: {{ currentTitle }}</h2>
     <AddTodo
       @add-todo="addTodo"
     />
@@ -25,17 +26,17 @@ export default {
       todoLists: [],
       currentList: {},
       currentId: "",
+      currentTitle: ""
     }
   },
   mounted() {
     this.currentId = this.$route.params.id;
-    console.log("currentId: ", this.$route.params);
+    this.currentTitle = this.$route.params.name;
   
     if(localStorage.getItem("todoLists")) {
       try {
         this.todoLists = JSON.parse(localStorage.getItem("todoLists"));
         this.findCurrentListById();
-        console.log("todoLists: ", this.todoLists);
       } catch(e) {
         localStorage.removeItem("todoLists");
       }
@@ -68,4 +69,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+  .box-shadow, input {
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
+  }
+</style>

@@ -4,9 +4,6 @@
                 Todo App
         </h1>
     </router-link>
-     <h2 class="flex justify-center mt-4 text-xl text-white">
-      Design is my pasion!
-    </h2>
     <router-view/>
 </template>
 
