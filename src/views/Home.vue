@@ -1,11 +1,5 @@
 <template>
-    <div v-if="isListsEmpty()" class="bg-gray-500 mx-auto rounded mt-10 grid justify-items-center w-1/3 text-white">
-      <p class="text-lg mt-2">There are no todo lists available.</p>
-      <p class="text-sm mt-2">Would you like to add one?</p>
-      <button class="border rounded p-1 mb-2" @click="isModalOpen = true">
-        Add List
-      </button>
-    </div>
+    <NoLists v-if="isListsEmpty()" @open-modal="isModalOpen = true"/>
     <Modal v-if="isModalOpen" @close-add-modal="isModalOpen = false">
       <template #title>
         Add a list
@@ -21,6 +15,7 @@
 </template>
 
 <script>
+import NoLists from "../components/NoLists";
 import Modal from "../components/Modal";
 import TodoLists from "../components/TodoLists";
 import { v4 as uuidv4 } from 'uuid';
@@ -35,6 +30,7 @@ export default {
     }
   },
   components: {
+    NoLists,
     Modal,
     TodoLists
   },

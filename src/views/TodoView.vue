@@ -45,7 +45,6 @@ export default {
   methods: {
     addTodo(newTodo) {
       if(newTodo.title) {
-        console.log("currentList: ", this.currentList);
         this.currentList.todos.push(newTodo);
         this.saveTodos();
       }

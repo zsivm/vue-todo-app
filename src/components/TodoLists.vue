@@ -18,7 +18,7 @@
     <button 
       @click="openModal"
       class="bg-indigo-600 box-shadow border rounded p-2 mt-10">
-        Add New List
+        Add List
     </button>
   </div>
 </template>
