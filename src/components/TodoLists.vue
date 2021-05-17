@@ -1,6 +1,6 @@
 <template>
   <div class="text-white text-center mt-10 w-3/4 m-auto">
-    <h1 class="bg-indigo-500 mb-5 p-2 text-2xl rounded-full">Lists</h1>
+    <h1 class="bg-indigo-500 text-shadow w-1/2 m-auto mb-5 p-2 text-2xl rounded-full">Todo Lists</h1>
     <ul class="rounded">
         <li
             class="text-left p-3"
@@ -15,8 +15,10 @@
             </router-link>
         </li>
     </ul>
-    <button @click="openModal" class="bg-blue-600 border rounded p-2 mt-10">
-      Add New List
+    <button 
+      @click="openModal"
+      class="bg-indigo-600 box-shadow border rounded p-2 mt-10">
+        Add New List
     </button>
   </div>
 </template>
@@ -35,11 +37,11 @@ export default {
 
 <style scoped>
 li:nth-child(odd) {
-  background-color: rgb(96, 165, 250);
+  background-color: rgb(129, 140, 248);
 }
 
 li:nth-child(even) {
-  background-color: rgba(147, 197, 253);
+  background-color: rgba(79, 70, 229);
 }
 
 li:nth-child(1) {

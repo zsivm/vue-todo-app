@@ -1,6 +1,6 @@
 <template>
   <div class="bg-indigo-500 w-3/4 m-auto rounded-md px-4 pb-4 mt-8">
-    <h2 class="text-2xl text-white p-3">List: {{ currentTitle }}</h2>
+    <h2 class="text-2xl text-shadow text-white py-3">List: {{ currentTitle }}</h2>
     <AddTodo
       @add-todo="addTodo"
     />
@@ -70,7 +70,4 @@ export default {
 </script>
 
 <style>
-  .box-shadow, input {
-    box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
-  }
 </style>
