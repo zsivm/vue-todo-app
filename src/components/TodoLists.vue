@@ -17,7 +17,7 @@
     </ul>
     <button 
       @click="openModal"
-      class="bg-indigo-600 box-shadow border rounded p-2 mt-10">
+      class="bg-indigo-600 box-shadow hover:bg-indigo-700 border rounded p-2 mt-10">
         Add List
     </button>
   </div>
