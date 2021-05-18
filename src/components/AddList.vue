@@ -6,7 +6,7 @@
         <template #body>
         <form @submit.prevent class="inline-block text-center">
             <input v-model="listName" class="border px-2" type="text" placeholder="Type name for list...">
-            <button class="border rounded p-1 bg-indigo-600 hover:bg-indigo-700 text-white mt-3" @click="addList">Add List</button>
+            <button class="border rounded p-1 bg-indigo-600 hover:bg-indigo-700 box-shadow text-white mt-3" @click="addList">Add List</button>
         </form> 
         </template>
     </Modal>
