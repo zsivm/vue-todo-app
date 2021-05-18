@@ -34,7 +34,6 @@ export default {
   },
   methods: {
     addList(listName) {
-      console.log(listName);
       if(listName) {
         this.todoLists.push(
           {

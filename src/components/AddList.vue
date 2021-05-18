@@ -26,7 +26,6 @@ export default {
     methods: {
         addList() {
             this.$emit("add-list", this.listName);
-            console.log("listName: ", this.listName);
         }
     }
 }
