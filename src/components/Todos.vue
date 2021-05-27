@@ -12,6 +12,7 @@
 import Todo from './Todo';
 export default {
   name: 'Todos',
+  emits: ["delete-todo", "todo-clicked"],
   components: {
     Todo
   },

@@ -15,6 +15,8 @@
 <script>
 import Modal from "./Modal";
 export default {
+    name: "AddList",
+    emits: ["add-list"],
     components: {
         Modal
     },

@@ -17,6 +17,7 @@
 <script>
 export default {
   name: 'Todo',
+  emits: ["delete-todo", "todo-clicked"],
   props: [
     "todo"
   ],
