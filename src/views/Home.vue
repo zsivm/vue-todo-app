@@ -1,5 +1,5 @@
 <template>
-    <NoLists v-if="isListsEmpty()" @open-modal="isModalOpen = true"/>
+    <NoLists v-if="isNoListsVisible" @open-modal="isModalOpen = true"/>
     <AddList v-if="isModalOpen" @add-list="addList" @close-add-modal="isModalOpen = false"/>
     <TodoLists @open-modal="isModalOpen = true" :todoLists="todoLists" v-if="!isListsEmpty()"/>
 </template>
@@ -9,6 +9,7 @@ import NoLists from "../components/NoLists";
 import AddList from "../components/AddList";
 import TodoLists from "../components/TodoLists";
 import { v4 as uuidv4 } from 'uuid';
+import { db } from "../firebase";
 
 export default {
   name: "App",
@@ -16,6 +17,7 @@ export default {
     return {
       todoLists: [],
       isModalOpen: false,
+      isNoListsVisible: false,
     }
   },
   components: {
@@ -24,27 +26,35 @@ export default {
     TodoLists
   },
   mounted() {
-    if(localStorage.getItem("todoLists")) {
-      try {
-        this.todoLists = JSON.parse(localStorage.getItem("todoLists"));
-      } catch(e) {
-        localStorage.removeItem("todoLists");
-      }
-    }
+    db.collection("todoLists").get().then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+          const data = {
+          //'id': doc.id,
+          'id': doc.data().id,
+          'name': doc.data().name,
+          'todos': doc.data().todos
+          }
+          this.todoLists.push(data);
+      });
+
+      this.isNoListsVisible = this.todoLists.length ? false : true;
+
+    }).catch(error => {
+      console.log("Error getting document", error);
+    });
   },
   methods: {
     addList(listName) {
       if(listName) {
-        this.todoLists.push(
-          {
-            id: uuidv4(),
-            name: listName,
-            todos: []
-          }
-        );
 
-        const parsed = JSON.stringify(this.todoLists);
-        localStorage.setItem("todoLists", parsed);
+        let list = {
+          id: uuidv4(),
+          name: listName,
+          todos: []
+        };
+
+        db.collection("todoLists").add(list);
+        this.todoLists.push(list);
 
         this.isModalOpen = false;
       }

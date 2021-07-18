@@ -1,6 +1,6 @@
-import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
-import TodoView from "../views/TodoView.vue";
+import { createRouter, createWebHistory } from "vue-router"
+import Home from "../views/Home.vue"
+import TodoView from "../views/TodoView.vue"
 
 const routes = [
   {
@@ -13,7 +13,7 @@ const routes = [
     name: "TodoView",
     component: TodoView,
     props: true
-  },
+  }
 ];
 
 const router = createRouter({
